@@ -1,3 +1,15 @@
-#paragraph {
-    color: blue;
+.row {
+    border: 10px solid #dadada;
+    display: flex;
+    margin: 10px;
+    text-align: center;
+}
+
+.key {
+    border: 3px solid green;
+    width: 20px;
+}
+
+.element {
+
 }

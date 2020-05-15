@@ -1,6 +1,6 @@
-import { from } from "rxjs";
-import { GraphEdge } from "./modules/graph-edge";
+import { DiGraph } from "./modules/digraph";
 import { GraphNode } from "./modules/graph-node";
+import { GraphEdge } from "./modules/graph-edge";
 
 function random_rgba() {
     var o = Math.round, r = Math.random, s = 255;
@@ -10,18 +10,20 @@ function random_rgba() {
 (() => {
     const content = document.getElementById('content');
 
-    from([1, 2, 3, 4, 5]).subscribe(
-        value => {
-            const node1 = new GraphNode(`Node ${value + 1}`);
-            const node2 = new GraphNode(`Node ${value + 2}`);
-            const edge = new GraphEdge(node1, node2);
-            const edgeDiv: HTMLDivElement = document.createElement('div');
-            edgeDiv.innerText = edge.toString();
-            edgeDiv.style.backgroundColor = random_rgba();
-            edgeDiv.style.height = '50px';
-            content.appendChild(edgeDiv);
-        }
-    );
+    const diGraph = new DiGraph();
+    const nodeA = new GraphNode('A');
+    const nodeB = new GraphNode('B');
+    const nodeC = new GraphNode('C');
+    const nodeD = new GraphNode('D');
+    const nodeE = new GraphNode('E');
+
+    diGraph.addNodes([nodeA, nodeB, nodeC, nodeD, nodeE]);
+    diGraph.addEdges([
+        new GraphEdge(nodeE, nodeD),
+        new GraphEdge(nodeA, nodeD),
+        new GraphEdge(nodeE, nodeA),
+    ]);
+    content.appendChild(diGraph.draw());
     // for (const index of Array(10000).keys()) {
     //     const div: HTMLDivElement = document.createElement('div');
     //     // div.innerText = new GraphNode(`Node - ${index + 1}`).toString();
