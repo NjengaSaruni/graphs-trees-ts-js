@@ -1,6 +1,6 @@
-import { DiGraph } from "./modules/digraph";
-import { GraphNode } from "./modules/graph-node";
-import { GraphEdge } from "./modules/graph-edge";
+import { DiGraph } from "./modules/graph/digraph";
+import { GraphNode } from "./modules/graph/graph-node";
+import { GraphEdge } from "./modules/graph/graph-edge";
 
 function random_rgba() {
     var o = Math.round, r = Math.random, s = 255;
@@ -21,7 +21,10 @@ function random_rgba() {
     diGraph.addEdges([
         new GraphEdge(nodeE, nodeD),
         new GraphEdge(nodeA, nodeD),
-        new GraphEdge(nodeE, nodeA),
+        new GraphEdge(nodeE, nodeC),
+        new GraphEdge(nodeC, nodeA),
+        new GraphEdge(nodeE, nodeB),
+        new GraphEdge(nodeD, nodeE),
     ]);
     content.appendChild(diGraph.draw());
     // for (const index of Array(10000).keys()) {

@@ -1,4 +1,4 @@
-import { GraphNode } from "./modules/graph-node";
+import { GraphNode } from "./modules/graph/graph-node";
 
 describe('A Graph  Node', () => {
    it('should be created', () => {

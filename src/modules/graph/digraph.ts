@@ -37,6 +37,10 @@ export class DiGraph {
         return this._aList.get(node);
     }
 
+    public isLeaf(node: GraphNode) {
+        return this.childrenOf(node).length == 0;
+    }
+
     public hasNode(node: GraphNode) {
         return this._aList.has(node);
     }
@@ -64,7 +68,7 @@ export class DiGraph {
             adjacentNodes.forEach(node => {
                 const adjacentNodeDiv = document.createElement('div');
                 adjacentNodeDiv.innerText = node.name;
-                adjacentNodeDiv.className = 'key';
+                adjacentNodeDiv.className = 'element';
                 row.appendChild(adjacentNodeDiv);
             });
             diGraph.appendChild(row);
