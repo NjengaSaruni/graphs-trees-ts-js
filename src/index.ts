@@ -8,7 +8,7 @@ function random_rgba() {
 }
 
 (() => {
-    const content = document.getElementById('content');
+    const content: HTMLDivElement = <HTMLDivElement>document.getElementById('content');
 
     const diGraph = new DiGraph();
     const nodeA = new GraphNode('A');
@@ -26,7 +26,7 @@ function random_rgba() {
         new GraphEdge(nodeE, nodeB),
         new GraphEdge(nodeD, nodeE),
     ]);
-    content.appendChild(diGraph.draw());
+    diGraph.draw(content);
     // for (const index of Array(10000).keys()) {
     //     const div: HTMLDivElement = document.createElement('div');
     //     // div.innerText = new GraphNode(`Node - ${index + 1}`).toString();

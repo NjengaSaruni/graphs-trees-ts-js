@@ -1,5 +1,7 @@
 import { GraphEdge } from "./graph-edge";
 import { GraphNode } from "./graph-node";
+import { from, interval, of } from "rxjs";
+import { concatMap, delay, map, mergeMap, tap } from "rxjs/operators";
 
 export class DiGraph {
     private _aList: Map<GraphNode, GraphNode[]> = new Map();
@@ -53,8 +55,8 @@ export class DiGraph {
         });
     }
 
-    public draw(): HTMLDivElement {
-        const diGraph = document.createElement('div');
+    public draw(container: HTMLDivElement) {
+        const rows: HTMLDivElement[] = [];
         this._aList.forEach((adjacentNodes, keyNode) => {
             const row: HTMLDivElement = document.createElement('div');
             row.className = 'row';
@@ -71,9 +73,14 @@ export class DiGraph {
                 adjacentNodeDiv.className = 'element';
                 row.appendChild(adjacentNodeDiv);
             });
-            diGraph.appendChild(row);
+
+            rows.push(row);
         });
 
-        return diGraph;
+        interval(300)
+            .pipe(
+                map(index => rows[index % rows.length]),)
+            .subscribe(row => {
+                container.appendChild(row);});
     }
 }
