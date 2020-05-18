@@ -1,7 +1,7 @@
 import { GraphEdge } from "./graph-edge";
 import { GraphNode } from "./graph-node";
 import { from, interval, of } from "rxjs";
-import { concatMap, delay, map, mergeMap, tap } from "rxjs/operators";
+import { concatMap, delay, map, mergeMap, take, tap } from "rxjs/operators";
 
 export class DiGraph {
     private _aList: Map<GraphNode, GraphNode[]> = new Map();
@@ -79,7 +79,8 @@ export class DiGraph {
 
         interval(300)
             .pipe(
-                map(index => rows[index % rows.length]),)
+                take(rows.length),
+                map(index => rows[index]))
             .subscribe(row => {
                 container.appendChild(row);});
     }
