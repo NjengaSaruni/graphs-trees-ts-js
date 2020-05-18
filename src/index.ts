@@ -39,8 +39,8 @@ function drawCssLearningZone(content: HTMLDivElement) {
     // // Append link element to HTML head
     head.appendChild(link);
 
-    stylesheet = document.getElementById('1.1');
     setTimeout(() => {
+        stylesheet = document.getElementById('1.1');
         if (stylesheet) {
             stylesheet.parentNode.removeChild(stylesheet);
         }
@@ -69,7 +69,7 @@ function drawDiGraph(content: HTMLDivElement) {
 
 (() => {
     const content: HTMLDivElement = <HTMLDivElement>document.getElementById('content');
-    interval(1000).subscribe(value => {
+    interval(10).subscribe(value => {
             drawCssLearningZone(content)
         }
     );
