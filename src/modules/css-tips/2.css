@@ -1,0 +1,5 @@
+.padded {
+    font-size: 16px;
+    padding: 1em;
+    border: 1px dashed grey;
+}

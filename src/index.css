@@ -1,3 +1,7 @@
+body {
+    font-family: Bahnschrift, sans-serif;
+}
+
 .row {
     border: 10px solid #dadada;
     display: flex;

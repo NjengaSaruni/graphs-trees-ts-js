@@ -8,13 +8,13 @@ function random_rgba() {
     return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')';
 }
 
-function drawCssLearningZone(content: HTMLDivElement) {
-    let stylesheet = document.getElementById('1');
+function drawCssLearningZone(content: HTMLDivElement, name: string) {
+    let stylesheet = document.getElementById(`${name}`);
     if(stylesheet) {
-        stylesheet.id = '1.1';
+        stylesheet.id = `${name}.1`;
     }
 
-    fetch('src/modules/css-tips/1.html')
+    fetch(`src/modules/css-tips/${name}.html`)
         .then(data => data.text())
         .then(html => {
             const zone = document.createElement('div');
@@ -32,15 +32,15 @@ function drawCssLearningZone(content: HTMLDivElement) {
     //
     link.type = 'text/css';
     //
-    link.href = 'src/modules/css-tips/1.css';
+    link.href = `src/modules/css-tips/${name}.css`;
 
-    link.id = '1';
+    link.id = `${name}`;
     //
     // // Append link element to HTML head
     head.appendChild(link);
 
     setTimeout(() => {
-        stylesheet = document.getElementById('1.1');
+        stylesheet = document.getElementById(`${name}.1`);
         if (stylesheet) {
             stylesheet.parentNode.removeChild(stylesheet);
         }
@@ -69,8 +69,8 @@ function drawDiGraph(content: HTMLDivElement) {
 
 (() => {
     const content: HTMLDivElement = <HTMLDivElement>document.getElementById('content');
-    interval(10).subscribe(value => {
-            drawCssLearningZone(content)
+    interval(10).subscribe(_ => {
+            drawCssLearningZone(content, '2')
         }
     );
     // drawDiGraph(content);
