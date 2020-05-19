@@ -1,5 +1,22 @@
 :root {
-    font-size: calc(0.5em + 1vw);
+    font-size: calc(0.5em + 0.75vw);
+    --secondary-font: Helvetica, Arial, sans-serif;
+    --main-color: #19191d;
+    --main-bg: #c5fff0;
+    --theme-color: #e5e7e0;
+}
+
+body {
+    color: var(--main-color);
+    background-color: var(--main-bg);
+}
+
+button {
+    padding: 1em;
+    font-size: .8rem;
+    cursor: pointer;
+    color: var(--main-color);
+    background-color: var(--main-bg);
 }
 
 .panel {
@@ -15,6 +32,7 @@
 
 .panel.small {
     font-size: 0.8rem;
+    font-family: var(--secondary-font);
 }
 
 .panel > h2 {

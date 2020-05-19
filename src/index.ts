@@ -1,7 +1,7 @@
 import { DiGraph } from "./modules/graph/digraph";
 import { GraphNode } from "./modules/graph/graph-node";
 import { GraphEdge } from "./modules/graph/graph-edge";
-import { interval } from "rxjs";
+import { fromEvent, interval } from "rxjs";
 
 function random_rgba() {
     var o = Math.round, r = Math.random, s = 255;
@@ -14,7 +14,7 @@ function drawCssLearningZone(content: HTMLDivElement, name: string) {
         stylesheet.id = `${name}.1`;
     }
 
-    fetch(`src/modules/css-tips/${name}.html`)
+    const promise = fetch(`src/modules/css-tips/${name}.html`)
         .then(data => data.text())
         .then(html => {
             const zone = document.createElement('div');
@@ -44,8 +44,9 @@ function drawCssLearningZone(content: HTMLDivElement, name: string) {
         if (stylesheet) {
             stylesheet.parentNode.removeChild(stylesheet);
         }
-    }, 600)
+    }, 600);
 
+    return promise;
 }
 function drawDiGraph(content: HTMLDivElement) {
     const diGraph = new DiGraph();
@@ -69,10 +70,21 @@ function drawDiGraph(content: HTMLDivElement) {
 
 (() => {
     const content: HTMLDivElement = <HTMLDivElement>document.getElementById('content');
-    interval(10).subscribe(_ => {
-            drawCssLearningZone(content, '2')
-        }
-    );
+    // interval(10).subscribe(_ => {
+    drawCssLearningZone(content, '2').then((data) => {
+        fromEvent(document.querySelector('.select'), 'change')
+            .subscribe((value) => {
+                const rootElement = document.documentElement;
+                var styles = getComputedStyle(rootElement);
+                var mainColor = styles.getPropertyValue('--main-color');
+                var mainBg = styles.getPropertyValue('--main-bg');
+                rootElement.style.setProperty('--main-bg', mainColor.trim());
+                rootElement.style.setProperty('--main-color', mainBg.trim());
+            });
+    });
+
+    // }
+    // );
     // drawDiGraph(content);
     // for (const index of Array(10000).keys()) {
     //     const div: HTMLDivElement = document.createElement('div');
