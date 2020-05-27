@@ -2,20 +2,12 @@ body {
     font-family: Bahnschrift, sans-serif;
 }
 
-.row {
-    border: 10px solid #dadada;
-    display: flex;
-    margin: 10px;
-    text-align: center;
+:root {
+    box-sizing: border-box;
 }
 
-.key {
-    border: 3px solid green;
-    width: 20px;
-}
-
-.element {
-    width: 20px;
-    border: 3px solid yellow;
-    margin-left: 20px;
+*,
+::before,
+::after {
+    box-sizing: inherit;
 }

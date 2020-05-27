@@ -70,17 +70,8 @@ function drawDiGraph(content: HTMLDivElement) {
 
 (() => {
     const content: HTMLDivElement = <HTMLDivElement>document.getElementById('content');
-    // interval(10).subscribe(_ => {
-    drawCssLearningZone(content, '2').then((data) => {
-        fromEvent(document.querySelector('.select'), 'change')
-            .subscribe((value) => {
-                const rootElement = document.documentElement;
-                var styles = getComputedStyle(rootElement);
-                var mainColor = styles.getPropertyValue('--main-color');
-                var mainBg = styles.getPropertyValue('--main-bg');
-                rootElement.style.setProperty('--main-bg', mainColor.trim());
-                rootElement.style.setProperty('--main-color', mainBg.trim());
-            });
+    interval(0).subscribe(_ => {
+        drawCssLearningZone(content, '3');
     });
 
     // }
