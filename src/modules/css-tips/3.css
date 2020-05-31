@@ -3,6 +3,7 @@
 }
 
 header {
+    padding: 1em 1.5em;
     color: #fff;
     background-color: #0072b0;
     border-radius: .5em;
@@ -12,18 +13,37 @@ main {
     display: block;
 }
 
+.flex {
+    display: flex;
+}
+
 .main {
-    float: left;
     width: 70%;
-    background-color: #8989da;
+    background-color: #fff;
     border-radius: .5em;
 }
 
 .sidebar {
-    float: left;
     width: calc(30% - 1.5em);
     margin-left: 1.5em;
-    background-color: #8989da;
+    background-color: #fff;
     padding: 1.5em;
     border-radius: .5em;
+}
+
+.button-link {
+    display: block;
+    padding: 0.5em;
+    color: #fff;
+    background-color: #0090c9;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.sponsor-link {
+    display: block;
+    color: #0072b0;
+    font-weight: bold;
+    text-decoration: none;
 }
