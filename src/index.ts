@@ -71,7 +71,7 @@ function drawDiGraph(content: HTMLDivElement) {
 (() => {
     const content: HTMLDivElement = <HTMLDivElement>document.getElementById('content');
     interval(0).subscribe(_ => {
-        drawCssLearningZone(content, '3');
+        drawCssLearningZone(content, '4');
     });
 
     // }
